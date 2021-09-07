@@ -16,7 +16,7 @@ public class PlantplacesApplication {
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PlantplacesApplication.class, args);
-		System.out.print("Test");
+		System.out.print("Test commit");
 	}
 
 }
