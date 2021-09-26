@@ -29,6 +29,9 @@ public class SpecimenDTO {
 		this.imagePath = imagePath;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public SpecimenDTO() {
 		
 	}
