@@ -1,5 +1,7 @@
 package com.plantplaces.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Component;
 
 import com.plantplaces.dto.SpecimenDTO;
@@ -13,6 +15,16 @@ import com.plantplaces.interfaces.ISpecimenService;
 @Component
 public class SpecimenServiceStub implements ISpecimenService {
 	
+	private ArrayList<SpecimenDTO> specimenList = new ArrayList<SpecimenDTO>();
+	
+	/**
+	 * initialize a local list of specimens. This should come for the persistence layer later
+	 */
+	public SpecimenServiceStub() {
+		specimenList.add(new SpecimenDTO(41, "42.63", "75.15", "Eastern Redbud", "~/assets/eastern redbud.jpg"));
+		specimenList.add(new SpecimenDTO(42, "61.63", "12.15", "Oak Tree", "~/assets/oak.jpg"));
+	}
+	
 	/**
 	 * Fetch a given specimen by ID
 	 * @param id id of specimen to fetch
@@ -22,13 +34,13 @@ public class SpecimenServiceStub implements ISpecimenService {
 	public SpecimenDTO fetchByID(int id) {
 		SpecimenDTO specimenDTO = new SpecimenDTO();
 		
-		//this should prob be set to the id parameter.
-		specimenDTO.setSpecimenID(id);
-		specimenDTO.setLatitude("40.75");
-		specimenDTO.setLongitude("-75.60");
-		specimenDTO.setDescription("A beautiful Eastern Redbud");
+		for(SpecimenDTO specimen : specimenList) {
+			if(specimen.getSpecimenID() == id) {
+				return specimen;
+			}
+		}
 		
-		return specimenDTO;
+		return new SpecimenDTO();
 	}
 	
 	/**

@@ -11,6 +11,27 @@ public class SpecimenDTO {
 	private String latitude;
 	private String longitude;
 	private String description;
+	private String imagePath;
+	
+	/**
+	 * This constructor is just to make inline object creation easier
+	 * @param specimenID ID of specimen
+	 * @param latitude latitude of where the specimen is located
+	 * @param longitude longitude of where the specimen is located
+	 * @param description short description of the specimen
+	 * @param imagePath path to the image of the specimen
+	 */
+	public SpecimenDTO(int specimenID, String latitude, String longitude, String description, String imagePath) {
+		this.specimenID = specimenID;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.description = description;
+		this.imagePath = imagePath;
+	}
+	
+	public SpecimenDTO() {
+		
+	}
 	
 	public String getDescription() {
 		return description;
@@ -35,6 +56,12 @@ public class SpecimenDTO {
 	}
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	public String getImagePath() {
+		return this.imagePath;
 	}
 	
 	public String toString() {

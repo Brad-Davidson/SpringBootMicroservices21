@@ -31,7 +31,7 @@ public class PlantPlacesController {
 	 */
 	@RequestMapping(value="/start", method=RequestMethod.GET)
 	public String read(Model model) { 
-		SpecimenDTO specimen = specimenServiceStub.fetchByID(43);
+		SpecimenDTO specimen = specimenServiceStub.fetchByID(41);
 		model.addAttribute("specimen", specimen);
 		return "start";
 	}
@@ -43,7 +43,7 @@ public class PlantPlacesController {
 	public ModelAndView readSilver() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("start");
-		modelAndView.addObject("specimen", specimenServiceStub.fetchByID(85));
+		modelAndView.addObject("specimen", specimenServiceStub.fetchByID(42));
 		return modelAndView;
 	}
 	
@@ -64,6 +64,6 @@ public class PlantPlacesController {
 	//default address for our project
 	@RequestMapping("/")
 	public String index() {
-		return "start";
+		return "index";
 	}
 }
