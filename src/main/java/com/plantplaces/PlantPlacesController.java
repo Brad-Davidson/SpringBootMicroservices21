@@ -3,10 +3,16 @@
  */
 package com.plantplaces;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.plantplaces.dto.SpecimenDTO;
+import com.plantplaces.interfaces.ISpecimenService;
 
 /**
  * @author Bradley Davidson
@@ -15,13 +21,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class PlantPlacesController {
+	
+	@Autowired
+	private ISpecimenService specimenServiceStub;
 
 	/**
 	 * 
 	 * @return returns the start.html template
 	 */
 	@RequestMapping(value="/start", method=RequestMethod.GET)
-	public String read() {
+	public String read(Model model) { 
+		SpecimenDTO specimen = specimenServiceStub.fetchByID(43);
+		model.addAttribute("specimen", specimen);
+		return "start";
+	}
+	@RequestMapping(value="/start", method=RequestMethod.GET, params= {"loyalty=blue"})
+	public String readBlue() {
+		return "start";
+	}
+	@RequestMapping(value="/start", method=RequestMethod.GET, params= {"loyalty=silver"})
+	public ModelAndView readSilver() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("start");
+		modelAndView.addObject("specimen", specimenServiceStub.fetchByID(85));
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/start", method = RequestMethod.GET, headers= {"content-type=text/json"})
+	public String readJson() {
 		return "start";
 	}
 	
@@ -31,6 +58,12 @@ public class PlantPlacesController {
 	 */
 	@PostMapping("/start")
 	public String create() {
+		return "start";
+	}
+	
+	//default address for our project
+	@RequestMapping("/")
+	public String index() {
 		return "start";
 	}
 }
