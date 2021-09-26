@@ -23,6 +23,9 @@ public class SpecimenServiceStub implements ISpecimenService {
 	public SpecimenServiceStub() {
 		specimenList.add(new SpecimenDTO(41, "42.63", "75.15", "Eastern Redbud", "~/assets/eastern redbud.jpg"));
 		specimenList.add(new SpecimenDTO(42, "61.63", "12.15", "Oak Tree", "~/assets/oak.jpg"));
+		specimenList.add(new SpecimenDTO(43, "51.41", "31.11", "A less cool Eastern Redbud", "~/assets/eastern redbud.jpg"));
+		specimenList.add(new SpecimenDTO(44, "12.45", "34.21", "The same Oak Tree", "~/assets/oak.jpg"));
+		specimenList.add(new SpecimenDTO(45, "67.63", "17.15", "A big Oak Tree", "~/assets/oak.jpg"));
 	}
 	
 	/**

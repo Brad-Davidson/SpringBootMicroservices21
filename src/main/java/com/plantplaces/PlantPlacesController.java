@@ -36,7 +36,9 @@ public class PlantPlacesController {
 		return "start";
 	}
 	@RequestMapping(value="/start", method=RequestMethod.GET, params= {"loyalty=blue"})
-	public String readBlue() {
+	public String readBlue(Model model) {
+		SpecimenDTO specimen = specimenServiceStub.fetchByID(43);
+		model.addAttribute("specimen", specimen);
 		return "start";
 	}
 	@RequestMapping(value="/start", method=RequestMethod.GET, params= {"loyalty=silver"})
@@ -48,7 +50,9 @@ public class PlantPlacesController {
 	}
 	
 	@RequestMapping(value="/start", method = RequestMethod.GET, headers= {"content-type=text/json"})
-	public String readJson() {
+	public String readJson(Model model) {
+		SpecimenDTO specimen = specimenServiceStub.fetchByID(44);
+		model.addAttribute("specimen", specimen);
 		return "start";
 	}
 	
@@ -57,7 +61,9 @@ public class PlantPlacesController {
 	 * @return the start.html template
 	 */
 	@PostMapping("/start")
-	public String create() {
+	public String create(Model model) {
+		SpecimenDTO specimen = specimenServiceStub.fetchByID(45);
+		model.addAttribute("specimen", specimen);
 		return "start";
 	}
 	
